@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form method="GET" action="{{ path('app_conntact_new') }}">
+        <button type="submit">Dodaj nowy kontakt</button>
+    </form>
+    <table>
+    {% for conntact in conntacts %}
+    <tr>
+        <td><a href="{{ path('app_conntact_show', {'id':conntact.id}) }}">{{ conntact.name }}</a></td><td> {{ conntact.surname }} </td><td> {{ conntact.description }} </td>
+        <td><form action="{{ path('app_conntact_modify', {'id':conntact.id}) }}"><button type="submit">Edytuj</button></form></td>
+        <td><form action="{{ path('app_conntact_delete', {'id':conntact.id}) }}"><button type="submit">Usuń</button></form></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

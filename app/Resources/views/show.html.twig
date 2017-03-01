@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>
+    <p>Imię: {{ conntact.name }}</p>
+    <p>Nazwisko: {{ conntact.surname }}</p>
+    <p>Opis: {{ conntact.description }}</p>
+    </p>
+    <form action="{{ path('app_address_new', {'conntactId':conntact.id}) }}">
+        <button type="submit">Dodaj adres</button>
+    </form>
+    <table>
+    {%  for address in conntact.addresses %}
+        <tr>
+            <td>{{ address.city }}</td>
+            <td>{{ address.street }}</td>
+            <td>{{ address.houseNumber }}</td>
+            <td>{{ address.flatNumber }}</td>
+            <td>{{ address.description }}</td>
+            <td><form action="{{ path('app_address_modify', {'id':address.id}) }}"><button type="submit">Edytuj</button></form></td>
+            <td><form action="{{ path('app_address_delete', {'id':address.id}) }}"><button type="submit">Usuń</button></form></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
