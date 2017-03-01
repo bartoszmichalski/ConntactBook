@@ -48,9 +48,15 @@ class Conntact
      */
     private $addresses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Phone", mappedBy="conntact")
+     */
+    private $phones;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
+        $this->phones = new ArrayCollection();
     }
 
 
@@ -164,5 +170,38 @@ class Conntact
     public function getAddresses()
     {
         return $this->addresses;
+    }
+
+    /**
+     * Add phones
+     *
+     * @param \AppBundle\Entity\Phone $phones
+     * @return Conntact
+     */
+    public function addPhone(\AppBundle\Entity\Phone $phones)
+    {
+        $this->phones[] = $phones;
+
+        return $this;
+    }
+
+    /**
+     * Remove phones
+     *
+     * @param \AppBundle\Entity\Phone $phones
+     */
+    public function removePhone(\AppBundle\Entity\Phone $phones)
+    {
+        $this->phones->removeElement($phones);
+    }
+
+    /**
+     * Get phones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhones()
+    {
+        return $this->phones;
     }
 }

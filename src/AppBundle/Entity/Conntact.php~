@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Conntact
@@ -47,9 +48,15 @@ class Conntact
      */
     private $addresses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Phone", mappedBy="conntact")
+     */
+    private $phones;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
+        $this->phones = new ArrayCollection();
     }
 
 
@@ -130,5 +137,38 @@ class Conntact
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     * @return Conntact
+     */
+    public function addAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     */
+    public function removeAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }

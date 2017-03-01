@@ -1,21 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p>
-    <p>Imię: {{ conntact.name }}</p>
-    <p>Nazwisko: {{ conntact.surname }}</p>
-    <p>Opis: {{ conntact.description }}</p>
-    </p>
-    <form action="{{ path('app_address_new', {'conntactId':conntact.id}) }}">
-        <button type="submit">Dodaj adres</button>
-    </form>
-    <table>
+    Dane kontaktowe:
+    <table class="table">
+        <tr>
+            <td>Imię:</td>
+            <td>{{ conntact.name }}</td>
+        </tr>
+        <tr>
+            <td>Nazwisko:</td>
+            <td> {{ conntact.surname }}</td>
+        </tr>
+        <tr>
+            <td>Opis:</td>
+            <td> {{ conntact.description }}</td>
+        </tr>
+    </table>
+    <hr>
+    <p>Adresy:</p>
+    <table class="table">
+        <th>Miasto</th>
+        <th>Ulica</th>
+        <th>nr domu / nr mieszkania</th>
+        <th>Opis</th>
+        <th>Edytuj</th>
+        <th>Usuń</th>
     {%  for address in conntact.addresses %}
         <tr>
             <td>{{ address.city }}</td>
             <td>{{ address.street }}</td>
-            <td>{{ address.houseNumber }}</td>
-            <td>{{ address.flatNumber }}</td>
+            <td>{{ address.houseNumber }}{% if address.flatNumber !='' %} / {{ address.flatNumber }}{% endif %}</td>
             <td>{{ address.description }}</td>
             <td><form action="{{ path('app_address_modify', {'id':address.id}) }}"><button type="submit">Edytuj</button></form></td>
             <td><form action="{{ path('app_address_delete', {'id':address.id}) }}"><button type="submit">Usuń</button></form></td>
@@ -23,4 +37,30 @@
         </tr>
         {% endfor %}
     </table>
+    <form action="{{ path('app_address_new', {'conntactId':conntact.id}) }}">
+            <button type="submit">Dodaj nowy adres</button>
+    </form>
+    <br>
+    <hr>
+    <p>Telefony:</p>
+    <table class="table">
+        <th>Numer</th>
+        <th>Typ</th>
+        <th>Edytuj</th>
+        <th>Usuń</th>
+    {%  for phone in conntact.phones %}
+        <tr>
+
+
+            <td>{{ phone.number }}</td>
+            <td>{{ phone.type }}</td>
+            <td><form action="{{ path('app_phone_modify', {'id':phone.id}) }}"><button type="submit">Edytuj</button></form></td>
+            <td><form action="{{ path('app_phone_delete', {'id':phone.id}) }}"><button type="submit">Usuń</button></form></td>
+        </tr>
+    {% endfor %}
+
+    </table>
+    <form action="{{ path('app_phone_new', {'conntactId':conntact.id}) }}">
+        <button type="submit">Dodaj nowy telefon</button>
+    </form>
 {% endblock %}

@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Address;
-use AppBundle\Entity\Conntact;
 use AppBundle\Form\AddressType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -104,32 +103,12 @@ class AddressController extends Controller
                 ->getManager();
 
             $em->flush();
-
-//            return $this->redirectToRoute(
-//                'app_address_show',
-//                [
-//                    'id' => $address->getId()
-//                ]
-//            );
             return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntact]);
-
         }
         return ['form' => $form->createView()];
 
     }
 
-    /**
-     * @Route("/showAll")
-     * @Template("showAll.html.twig")
-     */
-    public function showAll()
-    {
-        $addresses = $this->getDoctrine()->getRepository('AppBundle:Address')->findAll();
-        if (!$addresses) {
-            throw $this->createNotFoundException('Addresses not found');
-        }
-        return ['addresses' => $addresses];
-    }
 
     /**
      * @Route("/show/{id}")
@@ -153,7 +132,7 @@ class AddressController extends Controller
         if (!$address) {
             throw $this->createNotFoundException('Address not found');
         }
-
+        $conntact = $address->getConntact()->getId();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($address);
