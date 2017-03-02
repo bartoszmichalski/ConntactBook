@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
-    <form method="GET" action="{{ path('app_conntact_new') }}">
-        <button type="submit">Dodaj nowy kontakt</button>
-    </form>
     <table class="table table-striped">
         <tbody>
             <th>Imię</th>
@@ -11,13 +8,17 @@
             <th>Opis</th>
             <th>Edytuj</th>
             <th>Usuń</th>
-        {% for conntact in conntacts %}
+            {% for conntact in conntacts %}
             <tr>
                 <td><a href="{{ path('app_conntact_show', {'id':conntact.id}) }}">{{ conntact.name }}</a></td><td><a href="{{ path('app_conntact_show', {'id':conntact.id}) }}"> {{ conntact.surname }}</a> </td><td> {{ conntact.description }} </td>
                 <td><form action="{{ path('app_conntact_modify', {'id':conntact.id}) }}"><button type="submit">Edytuj</button></form></td>
                 <td><form action="{{ path('app_conntact_delete', {'id':conntact.id}) }}"><button type="submit">Usuń</button></form></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
+    <br>
+    <form method="GET" action="{{ path('app_conntact_new') }}">
+        <button type="submit">Dodaj nowy kontakt</button>
+    </form>
 {% endblock %}

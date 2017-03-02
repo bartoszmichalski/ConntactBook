@@ -18,7 +18,7 @@ class PhoneController extends Controller
 {
     /**
      * @Route("/new/{conntactId}")
-     * @Template("new.html.twig")
+     * @Template("AppBundle:Phone:new.html.twig")
      */
     public function newAction(Request $request, $conntactId)
     {
@@ -35,6 +35,7 @@ class PhoneController extends Controller
 
     /**
      * @Route("/create/{conntactId}")
+     * @Template("AppBundle:Phone:new.html.twig")
      */
     public function createAction(Request $request, $conntactId)
     {
@@ -67,17 +68,22 @@ class PhoneController extends Controller
 
     /**
      * @Route("/modify/{id}")
+     * @Template("AppBundle:Phone:new.html.twig")
      */
     public function modifyAction(Request $request, $id)
     {
-        $phone = $this->getDoctrine()->getRepository('AppBundle:Phone')->find($id);
+        $phone = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Phone')
+            ->find($id);
         if (!$phone) {
             throw $this->createNotFoundException('Phone not found');
         }
 
         $form = $this->createForm(new PhoneType(), $phone);
+        $form->handleRequest($request);
         $conntactId = $phone->getConntact()->getId();
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntactId]);
@@ -88,6 +94,7 @@ class PhoneController extends Controller
 
     /**
      * @Route("/delete/{id}")
+     * @Template("AppBundle:Conntact:show.html.twig")
      */
     public function deleteAction(Request $request, $id)
     {

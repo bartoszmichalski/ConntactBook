@@ -1,7 +1,10 @@
-{% extends "::base.html.twig" %}
+{% extends "AppBundle::base.html.twig" %}
 
 {% block title %}AppBundle:Address:new{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Address:new page</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit">
+    {{ form_end(form) }}
 {% endblock %}

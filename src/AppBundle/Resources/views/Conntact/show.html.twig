@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
     Dane kontaktowe:
@@ -25,7 +25,7 @@
         <th>Opis</th>
         <th>Edytuj</th>
         <th>Usuń</th>
-    {%  for address in conntact.addresses %}
+        {%  for address in conntact.addresses %}
         <tr>
             <td>{{ address.city }}</td>
             <td>{{ address.street }}</td>
@@ -33,7 +33,6 @@
             <td>{{ address.description }}</td>
             <td><form action="{{ path('app_address_modify', {'id':address.id}) }}"><button type="submit">Edytuj</button></form></td>
             <td><form action="{{ path('app_address_delete', {'id':address.id}) }}"><button type="submit">Usuń</button></form></td>
-
         </tr>
         {% endfor %}
     </table>
@@ -48,17 +47,14 @@
         <th>Typ</th>
         <th>Edytuj</th>
         <th>Usuń</th>
-    {%  for phone in conntact.phones %}
+        {%  for phone in conntact.phones %}
         <tr>
-
-
             <td>{{ phone.number }}</td>
             <td>{{ phone.type }}</td>
             <td><form action="{{ path('app_phone_modify', {'id':phone.id}) }}"><button type="submit">Edytuj</button></form></td>
             <td><form action="{{ path('app_phone_delete', {'id':phone.id}) }}"><button type="submit">Usuń</button></form></td>
         </tr>
-    {% endfor %}
-
+        {% endfor %}
     </table>
     <form action="{{ path('app_phone_new', {'conntactId':conntact.id}) }}">
         <button type="submit">Dodaj nowy telefon</button>

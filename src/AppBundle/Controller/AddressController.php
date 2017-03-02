@@ -17,7 +17,7 @@ class AddressController extends Controller
 {
     /**
      * @Route("/new/{conntactId}")
-     * @Template("new.html.twig")
+     * @Template("AppBundle:Address:new.html.twig")
      */
     public function newAction(Request $request, $conntactId)
     {
@@ -81,7 +81,7 @@ class AddressController extends Controller
 
     /**
      * @Route("/modify/{id}")
-     * @Template("new.html.twig")
+     * @Template("AppBundle:Address:new.html.twig")
      */
     public function modifyAction(Request $request,$id)
     {

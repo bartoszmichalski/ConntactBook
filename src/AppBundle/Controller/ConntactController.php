@@ -18,7 +18,7 @@ class ConntactController extends Controller
 {
     /**
      * @Route("/new")
-     * @Template("new.html.twig")
+     * @Template("AppBundle:Conntact:new.html.twig")
      */
     public function newAction(Request $request)
     {
@@ -38,6 +38,7 @@ class ConntactController extends Controller
 
     /**
      * @Route("/create")
+     * @Template("AppBundle:Conntact:new.html.twig")
      * @Method("POST")
      */
     public function createAction(Request $request)
@@ -69,7 +70,7 @@ class ConntactController extends Controller
 
     /**
      * @Route("/modify/{id}")
-     * @Template("new.html.twig")
+     * @Template("AppBundle:Conntact:new.html.twig")
      */
     public function modifyAction(Request $request,$id)
     {
@@ -104,7 +105,7 @@ class ConntactController extends Controller
 
     /**
      * @Route("/showAll")
-     * @Template("showAll.html.twig")
+     * @Template("AppBundle:Conntact:showAll.html.twig")
      */
     public function showAll()
     {
@@ -117,7 +118,7 @@ class ConntactController extends Controller
 
     /**
      * @Route("/show/{id}")
-     * @Template("show.html.twig")
+     * @Template("AppBundle:Conntact:show.html.twig")
      */
     public function show(Request $request,$id)
     {
