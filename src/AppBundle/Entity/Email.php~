@@ -96,4 +96,27 @@ class Email
     {
         return $this->type;
     }
+
+    /**
+     * Set conntact
+     *
+     * @param \AppBundle\Entity\Conntact $conntact
+     * @return Email
+     */
+    public function setConntact(\AppBundle\Entity\Conntact $conntact = null)
+    {
+        $this->conntact = $conntact;
+
+        return $this;
+    }
+
+    /**
+     * Get conntact
+     *
+     * @return \AppBundle\Entity\Conntact 
+     */
+    public function getConntact()
+    {
+        return $this->conntact;
+    }
 }
