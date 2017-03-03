@@ -59,4 +59,22 @@
     <form action="{{ path('app_phone_new', {'conntactId':conntact.id}) }}">
         <button type="submit">Dodaj nowy telefon</button>
     </form>
+    <p>Adresy email:</p>
+    <table class="table">
+        <th>Adres email</th>
+        <th>Typ</th>
+        <th>Edytuj</th>
+        <th>Usuń</th>
+        {%  for email in conntact.emailAddresses %}
+            <tr>
+                <td>{{ email.emailAddress }}</td>
+                <td>{{ email.type }}</td>
+                <td><form action="{{ path('app_email_modify', {'id':email.id}) }}"><button type="submit">Edytuj</button></form></td>
+                <td><form action="{{ path('app_email_delete', {'id':email.id}) }}"><button type="submit">Usuń</button></form></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ path('app_email_new', {'conntactId':conntact.id}) }}">
+        <button type="submit">Dodaj nowy adres email</button>
+    </form>
 {% endblock %}
