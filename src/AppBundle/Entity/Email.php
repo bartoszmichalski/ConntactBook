@@ -40,7 +40,6 @@ class Email
      */
     private $conntact;
 
-
     /**
      * Get id
      *

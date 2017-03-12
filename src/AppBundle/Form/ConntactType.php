@@ -16,8 +16,7 @@ class ConntactType extends AbstractType
         $builder
             ->add('name', null, ['label' => 'Imię '])
             ->add('surname', null, ['label' => 'Nazwisko    '])
-            ->add('description', null, ['label' => 'Opis '])
-        ;
+            ->add('description', null, ['label' => 'Opis ']);
     }
 
     /**
@@ -37,6 +36,4 @@ class ConntactType extends AbstractType
     {
         return 'appbundle_conntact';
     }
-
-
 }

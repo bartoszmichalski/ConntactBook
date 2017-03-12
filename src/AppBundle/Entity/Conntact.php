@@ -65,7 +65,6 @@ class Conntact
         $this->$emailAddresses = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
@@ -85,7 +84,6 @@ class Conntact
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 

@@ -15,9 +15,7 @@ class PhoneType extends AbstractType
     {
         $builder
             ->add('number', null, ['label' => 'numer '])
-            ->add('type', null, ['label' => 'typ '])
-
-        ;
+            ->add('type', null, ['label' => 'typ ']);
     }
 
     /**
@@ -37,6 +35,4 @@ class PhoneType extends AbstractType
     {
         return 'appbundle_phone';
     }
-
-
 }

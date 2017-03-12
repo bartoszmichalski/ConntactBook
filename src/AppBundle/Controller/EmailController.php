@@ -4,8 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Email;
 use AppBundle\Form\EmailType;
-use AppBundle\Entity\Conntact;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -107,9 +105,6 @@ class EmailController extends Controller
         $em->remove($email);
         $em->flush();
         return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntactId]);
-
-
     }
-
 }
 

@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * @Route("/conntact")
  */
@@ -33,7 +32,6 @@ class ConntactController extends Controller
         );
 
         return ['form' => $form->createView()];
-
     }
 
     /**
@@ -46,9 +44,7 @@ class ConntactController extends Controller
         $conntact = new Conntact();
 
         $form = $this->createForm(new ConntactType(), $conntact);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this
                 ->getDoctrine()
@@ -83,9 +79,7 @@ class ConntactController extends Controller
         }
 
         $form = $this->createForm(new ConntactType(), $conntact);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this
                 ->getDoctrine()

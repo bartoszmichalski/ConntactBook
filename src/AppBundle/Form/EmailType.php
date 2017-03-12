@@ -15,9 +15,7 @@ class EmailType extends AbstractType
     {
         $builder
             ->add('emailAddress', null, ['label' => 'Adres email '])
-            ->add('type', null, ['label' => 'typ '])
-
-        ;
+            ->add('type', null, ['label' => 'typ ']);
     }
 
     /**
@@ -37,6 +35,4 @@ class EmailType extends AbstractType
     {
         return 'appbundle_phone';
     }
-
-
 }

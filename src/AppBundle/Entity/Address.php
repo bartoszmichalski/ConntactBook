@@ -61,7 +61,6 @@ class Address
      */
     private $conntact;
 
-
     /**
      * Get id
      *
@@ -173,7 +172,6 @@ class Address
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -196,7 +194,6 @@ class Address
     public function setConntact(\AppBundle\Entity\Conntact $conntact = null)
     {
         $this->conntact = $conntact;
-
         return $this;
     }
 

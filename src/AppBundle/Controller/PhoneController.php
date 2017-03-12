@@ -4,8 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Phone;
 use AppBundle\Form\PhoneType;
-use AppBundle\Entity\Conntact;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -42,7 +40,6 @@ class PhoneController extends Controller
         $phone = new Phone();
         $form = $this->createForm(new PhoneType, $phone);
         $form->handleRequest($request);
-
         $conntact =$this
             ->getDoctrine()
             ->getRepository('AppBundle:Conntact')
@@ -89,7 +86,6 @@ class PhoneController extends Controller
             return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntactId]);
         }
         return ['form' => $form->createView()];
-
     }
 
     /**
@@ -107,8 +103,5 @@ class PhoneController extends Controller
         $em->remove($phone);
         $em->flush();
         return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntactId]);
-
-
     }
-
 }

@@ -10,7 +10,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <form method="GET" action="/conntact/showAll">
+        <form method="GET" action="{{ path('app_conntact_showall') }}">
             <button type="submit">Lista kontaktów</button>
         </form>
         {% block body %}{% endblock %}

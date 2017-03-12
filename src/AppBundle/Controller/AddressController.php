@@ -29,9 +29,7 @@ class AddressController extends Controller
                 'action' => $this->generateUrl('app_address_create', ['conntactId'=>$conntactId])
             ]
         );
-
         return ['form' => $form->createView()];
-
     }
 
     /**
@@ -41,11 +39,8 @@ class AddressController extends Controller
     public function createAction(Request $request, $conntactId)
     {
         $address = new Address();
-
         $form = $this->createForm(new AddressType(), $address);
-
         $form->handleRequest($request);
-
         $conntact = $this
             ->getDoctrine()
             ->getRepository('AppBundle:Conntact')
@@ -53,9 +48,7 @@ class AddressController extends Controller
         if (!$conntact) {
             throw $this->createNotFoundException('conntact not found');
         }
-
         $address->setConntact($conntact);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this
                 ->getDoctrine()
@@ -67,15 +60,7 @@ class AddressController extends Controller
                 [
                     'id' => $conntact->getId()
                 ]);
-//
-//            return $this->redirectToRoute(
-//                'app_address_show',
-//                [
-//                    'id' => $address->getId()
-//                ]
-//            );
         }
-
         return ['form' => $form->createView()];
     }
 
@@ -92,9 +77,7 @@ class AddressController extends Controller
         if (!$address) {
             throw $this->createNotFoundException('Address not found');
         }
-
         $form = $this->createForm(new AddressType(), $address);
-
         $form->handleRequest($request);
         $conntact = $address->getConntact()->getId();
         if ($form->isSubmitted() && $form->isValid()) {
@@ -106,7 +89,6 @@ class AddressController extends Controller
             return $this->redirectToRoute('app_conntact_show', [ 'id'=>$conntact]);
         }
         return ['form' => $form->createView()];
-
     }
 
 
